@@ -1,0 +1,13 @@
+// sample data file for CMSC 335, Fall 2014
+// Mihaela Dinsoreanu
+// Journal format:
+//    j : <index> : <title> : <genre> : <price> : <authorindex> : <date> : <issue>
+// Books format:
+//    b:<index>:<title>:<genre>:<price>:<author_index>
+b : 10001 : Java Basics : Science : 11.50 : 20001
+b : 10002 : Advanced Java : Science : 10.99 : 20001
+// Authors format:
+//    a:<index>:<name>:<address>
+a : 20001 : John Smith : Computers St. 50 Seattle 
+a : 20002 : Mary Jones : Literature Lane 25
+j : 30001 : Billy Martin : Science : 4.99 : 20004 : 09/13/1986 : 321

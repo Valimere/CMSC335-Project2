@@ -1,0 +1,37 @@
+// sample data file for CMSC 335, Fall 2014
+// Mihaela Dinsoreanu
+// Journal format:
+//    j : <index> : <title> : <genre> : <price> : <authorindex> : <date> : <issue>
+// Books format:
+//    b:<index>:<title>:<genre>:<price>:<author_index>
+b : 10001 : Java Basics : Science : 11.50 : 20001
+b : 10002 : Advanced Java : Science : 10.99 : 20001
+// Authors format:
+//    a:<index>:<name>:<address>
+a : 20001 : John Smith : Computers St. 50 Seattle 
+a : 20002 : Mary Jones : Literature Lane 25
+
+// testing space
+
+// testing input starting with b
+blah
+blaah2
+
+// testing input starting with a
+aah
+aahh2
+
+// testing book with extra fields
+b : 10003 : Intermediate Java : Science : 10.59 : 20001 : extra Field : extraField2
+// testing book with seperation being not " : " and extra space at the end
+b : 10004 : Intermediate Java: Science :10.59:20001 
+
+// testing author with extra fields
+a : 20003 : John Bad : Computers St. 50 Seattle : extraField3
+// testing book with seperation being not " : " and extra space at the end
+a :20003: John Bad:Computers St. 50 Seattle
+
+// testing white space " "
+
+j : 30001 : Billy Martin : Science : 4.99 : 20004 : 09/13/1986 : 321
+ 
