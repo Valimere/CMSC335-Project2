@@ -9,11 +9,7 @@
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Calendar;
-import java.util.List;
-import java.util.Locale;
+import java.util.*;
 
 public class LIMSMain {
 
@@ -89,7 +85,7 @@ public class LIMSMain {
         String journalGenre;
         double journalPrice;
         int journalAuthorIndex;
-        Calendar datePublished = Calendar.getInstance();
+        Calendar datePublished = GregorianCalendar.getInstance();
         SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy", Locale.US);
         int journalIssue;
         
@@ -216,8 +212,9 @@ public class LIMSMain {
                 System.out.println("journalPrice = " + journalPrice);
                 journalAuthorIndex = Integer.parseInt(list.get(5));
                 System.out.println("journalAuthorIndex = " + journalAuthorIndex);
-                datePublished.setTime(sdf.parse(list.get(6)));
-                System.out.println("datePublished = " + Journal.dateToString(datePublished));
+                Date date = sdf.parse(list.get(6));
+                datePublished.setTime(date);
+                System.out.println("datePublished = " + datePublished);
                 journalIssue = Integer.parseInt(list.get(7));
                 System.out.println("journalIssue = " + journalIssue);
 
@@ -227,17 +224,22 @@ public class LIMSMain {
                     System.out.println("Extra field: " + extrasList.get(n - 4));
                 }
 
+                System.out.println("journal date test: " + Journal.dateToString(datePublished));
+
                 // adding journal to Library
                 Journal journal1 = new Journal(journalIndex, journalTitle, journalGenre, journalPrice, journalAuthorIndex, datePublished, journalIssue);
                 System.out.println("");
+                System.out.println("testing date published isn't null" + datePublished);
                 System.out.println(journal1.toString());
+                /*
                 journal1.setIndex(journalIndex);
                 journal1.setTitle(journalTitle);
                 journal1.setGenre(journalGenre);
                 journal1.setPrice(journalPrice);
                 journal1.setAuthorIndex(journalAuthorIndex);
-                journal1.setDatePublished(datePublished);
+                journal1.setJournalDatePublished(datePublished);
                 journal1.setIssue(journalIssue);
+                */
                 
                 mainLibrary.authorsJournal.put(journalIndex, journal1);
             }else {

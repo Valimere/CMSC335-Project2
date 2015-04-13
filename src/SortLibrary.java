@@ -7,9 +7,6 @@
  */
 
 import java.util.*;
-import java.lang.*;
-import static java.util.Collections.list;
-import static javafx.scene.input.KeyCode.T;
 
 /**
  * @author Valimere
@@ -168,34 +165,8 @@ public class SortLibrary {
 
         else if (sortLibraryBy.equals("Book - Price")) {
             sortedLibrary = "";
-            /*
-            // iterating over the pairs
-            Map.Entry pairs = (Map.Entry) bookIterator.next();
-            while (bookIterator.hasNext()) {
-                double bookPrice = Double.parseDouble(authorsBooks.get((Integer) pairs.getKey()).title
-                        + " : " + authorsBooks.get((Integer) pairs.getKey()).price);
-                System.out.println("bookPrice = " + bookPrice);
-                tempArrayStr.add(bookPrice);
-            }
-            */
-            // iterating over the pairs
-            while (bookIterator.hasNext()) {
-                Map.Entry pairs = (Map.Entry) bookIterator.next();
-                tempKey = (Integer) pairs.getValue();
-                System.out.println("steve look tempKey = ");
-                tempArrayInt.add(tempKey);
-            }
-            tempArrayInt.sort();
-            // concatinating sorted list to sorted string to be displayed.
-            for (int j = 0; j < tempArrayInt.size(); j++) {
-                System.out.println("");
 
-
-
-                // Adding author to sorted list
-                sortedLibrary = sortedLibrary.concat(("\nBook: " + Integer.parseInt(booksByAuthor(j))))
-                sortedLibrary = sortedLibrary.concat("\nAuthor: " + libraryOfAuthors.get(tempArrayInt.get(j)).toString());
-                System.out.println("");
+            getSortedBookByPrice(authorsBooks);
         }
 
         else if (sortLibraryBy.equals("Book - Index")) {
@@ -254,7 +225,7 @@ public class SortLibrary {
 
         while (journalIterator.hasNext()) {
             Map.Entry pairs = (Map.Entry) journalIterator.next();
-            int journalsAuthorIndex = authorsJournals.get(pairs.getKey()).authorIndex;
+            int journalsAuthorIndex = authorsJournals.get(pairs.getKey()).getAuthorIndex();
             System.out.println("authorIndex = " + authorIndex);
             System.out.println("journalsAuthorIndex = " + journalsAuthorIndex);
             if (authorIndex == journalsAuthorIndex) {
@@ -284,10 +255,22 @@ public class SortLibrary {
             System.out.println("authorIndexValue = " + authorIndexValue);
         }
     }
-    private static void getSortedBookByPrice(ArrayList<Integer> bookIndexList, ArrayList<String> bookList) {
-        for(int i = 0; i < bookList.size(); i++) {
-            int price = authorsBooks.get(price);
-        }
+    private static void getSortedBookByPrice(final Map bookMap) {
+
+        List list = new LinkedList(bookMap.values());
+        System.out.println("Before Sorting: " + list);
+        // Custom Comparator
+        Collections.sort(list, new Comparator() {
+                @Override
+                public int compare (Object o1, Object o2){
+                    Book b1 = (Book) o1;
+                    Book b2 = (Book) o2;
+
+                    return ((Comparable) b1.getPrice()).compareTo(b2.getPrice());
+            }
+        });
+        System.out.println("After Sorting: " + list);
+
     }
 
 
@@ -295,5 +278,6 @@ public class SortLibrary {
         String[] splitFullName = fullName.split(" ");
         return splitFullName[1] + " " + splitFullName[0] + " : " + splitFullName[3];
     }
+
 
 }

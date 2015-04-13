@@ -8,30 +8,30 @@ import java.util.Calendar;
 
 public class Journal {
     
-    public int index;
-    public String title;
-    public String genre;
-    public double price;
-    public int authorIndex;
-    public Calendar datePublished;
-    public int issue;
+    private int index;
+    private String title;
+    private String genre;
+    private double price;
+    private int authorIndex;
+    private Calendar journalDatePublished;
+    private int issue;
 
     public Journal(int index, String title, String genre, double price,
-            int authorIndex, Calendar datePublished, int issue) {
-        index = this.index;
-        title = this.title;
-        genre = this.genre;
-        price = this.price;
-        authorIndex = this.authorIndex;
-        datePublished = this.datePublished;
-        issue = this.issue;
+            int authorIndex, Calendar journalDatePublished, int issue) {
+        this.index = index;
+        this.title = title;
+        this.genre = genre;
+        this.price = price;
+        this.authorIndex = authorIndex;
+        this.journalDatePublished = journalDatePublished;
+        this.issue = issue;
     }
     
     public String toString() {
         return "\n" + "Index: " + getIndex() + "\n" + "Title: " + 
                 "\n" + "Genre: " + getGenre() + "\n" + "price: " + getPrice() + 
                 "\n" + "author_index: " + getAuthorIndex() + 
-                "\n" + "Date Published: " + dateToString(getDatePublished()) +
+                "\n" + "Date Published: " + dateToString(getJournalDatePublished()) +
                 "\n" + "Issue: " + getIssue();
     }
     
@@ -106,17 +106,17 @@ public class Journal {
     }
 
     /**
-     * @return the datePublished
+     * @return the journalDatePublished
      */
-    public Calendar getDatePublished() {
-        return (datePublished);
+    public Calendar getJournalDatePublished() {
+        return (journalDatePublished);
     }
 
     /**
-     * @param datePublished the dateOfBrith to set
+     * @param journalDatePublished the dateOfBrith to set
      */
-    public void setDatePublished(Calendar datePublished) {
-        this.datePublished = datePublished;
+    public void setJournalDatePublished(Calendar journalDatePublished) {
+        this.journalDatePublished = journalDatePublished;
     }
 
     /**
