@@ -1,9 +1,9 @@
 
 /**
- * file name GUIWindow
+ * file name LIMSMain
  * date      29 Mar 2015
  * author    Stephen Drollinger
- * purpose   Window for user to interact with
+ * purpose   main program that actively puts data into correct Library type
  *
  */
 

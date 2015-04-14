@@ -66,6 +66,12 @@ public class LibraryGui extends javax.swing.JFrame {
 
         jLabel3.setText("Library contains:");
 
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -132,6 +138,12 @@ public class LibraryGui extends javax.swing.JFrame {
         //Library.sort(jComboBox1.getSelectedItem().toString());
         jScrollPane1.setViewportView(new JLabel(convertToMultiline(Library.sort(jComboBox1.getSelectedItem().toString()))));
     }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+        jScrollPane1.setViewportView(new JLabel(convertToMultiline(Library.search(jTextField1.getText()))));
+        System.out.println("User Searched for: " + jTextField1.getText());
+    }//GEN-LAST:event_jTextField1ActionPerformed
 
 
 

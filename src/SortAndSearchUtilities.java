@@ -3,7 +3,6 @@
  * date      29 Mar 2015
  * author    Stephen Drollinger
  * purpose   User sends Library to this class to be sorted in user defined variable (way)
- *
  */
 
 import java.util.*;
@@ -18,9 +17,61 @@ public class SortAndSearchUtilities {
                                          Map<Integer, Author> libraryOfAuthors, Map<Integer, Book> authorsBooks,
                                          Map<Integer, Journal> authorsJournal) {
 
+        ArrayList<String> tempArrayStr = new ArrayList<String>();
+        ArrayList<Integer> tempArrayInt = new ArrayList<Integer>();
+        Integer tempKey;
 
+        System.out.println("entering search method looking for" + searchLibraryBy);
+        int currentAuthorIndex;
+        ArrayList<Integer> listOfKeys = new ArrayList<Integer>(libraryOfAuthors.keySet());
+
+
+        // Searching for authors and displaying the author + their books + Journals, works with multiple authors found
+        for (int authorKey : listOfKeys) {
+            System.out.println("entering Author for loop looking for" + searchLibraryBy);
+            Author currentAuthor = libraryOfAuthors.get(authorKey);
+            if (currentAuthor.getName().contains(searchLibraryBy)) {
+                searchedLibrary = searchedLibrary.concat(currentAuthor.toString());
+                currentAuthorIndex = currentAuthor.getIndex();
+
+                ArrayList<Integer> listOfBookKeys = new ArrayList<Integer>(authorsBooks.keySet());
+                for (int bookKey : listOfBookKeys) {
+                    System.out.println("entering Book for loop looking for" + searchLibraryBy);
+                    Book currentBook = authorsBooks.get(bookKey);
+                    if (currentBook.getAuthor_Index() == currentAuthorIndex) {
+                        searchedLibrary = searchedLibrary.concat(currentBook.toString());
+                    }
+                }
+                ArrayList<Integer> listOfJournalKeys = new ArrayList<Integer>(authorsJournal.keySet());
+                for (int journalKey : listOfJournalKeys) {
+                    System.out.println("entering Journal for loop looking for" + searchLibraryBy);
+                    Journal currentJournal = authorsJournal.get(journalKey);
+                    System.out.println("Journal being looked for:" + currentAuthorIndex);
+                    System.out.println("Journal being looked at:" + currentJournal.getAuthorIndex());
+                    if (currentJournal.getAuthorIndex() == currentAuthorIndex) {
+                        searchedLibrary = searchedLibrary.concat(currentJournal.toString());
+                    }
+                }
+            }
+            ArrayList<Integer> listOfJournalKeys = new ArrayList<Integer>(authorsJournal.keySet());
+        }
+
+        // Searching book titles
+        ArrayList<Integer> listOfBookKeys = new ArrayList<Integer>(authorsBooks.keySet());
+        for (int bookKey : listOfBookKeys) {
+            System.out.println("entering Book for loop looking for" + searchLibraryBy);
+            Book currentBook = authorsBooks.get(bookKey);
+            if (currentBook.getTitle().contains(searchLibraryBy)) {
+                searchedLibrary = searchedLibrary.concat(currentBook.toString());
+            }
+        }
+
+        if (searchedLibrary.equals(null)) {
+            searchedLibrary = "Searched for: " + searchLibraryBy + " Item not found";
+        }
 
         return searchedLibrary;
+
     }
 
     public static String getSortedLibraryString(String sortLibraryBy,
@@ -29,8 +80,7 @@ public class SortAndSearchUtilities {
 
         ArrayList<String> tempArrayStr = new ArrayList<String>();
         ArrayList<Integer> tempArrayInt = new ArrayList<Integer>();
-        //Integer[] tempArrayInt = new Integer[libraryOfAuthors.size()];
-        Integer tempKey = 0;
+        Integer tempKey;
 
         System.out.println("I'm going to sort the Library by :");
         System.out.println(sortLibraryBy);
@@ -93,37 +143,31 @@ public class SortAndSearchUtilities {
             System.out.println("");
             //getting auther index number
             sortedLibrary = sortedLibrary.concat(tempArrayStr.toString());
-        }
-
-        else if (sortLibraryBy.equals("Book - Title")) {
+        } else if (sortLibraryBy.equals("Book - Title")) {
             sortedLibrary = "";
             List sortedBooks;
             sortedBooks = getSortedBookByPrice(authorsBooks);
             sortedLibrary = sortedLibrary.concat(sortedBooks.toString());
             System.out.println("");
-        }
-        else if (sortLibraryBy.equals("Book - Price")) {
+        } else if (sortLibraryBy.equals("Book - Price")) {
             sortedLibrary = "";
             List sortedBooks;
             sortedBooks = getSortedBookByTitle(authorsBooks);
             sortedLibrary = sortedLibrary.concat(sortedBooks.toString());
             System.out.println("");
-        }
-        else if (sortLibraryBy.equals("Book - Index")) {
+        } else if (sortLibraryBy.equals("Book - Index")) {
             sortedLibrary = "";
             List sortedBooks;
             sortedBooks = getSortedBookByBookIndex(authorsBooks);
             sortedLibrary = sortedLibrary.concat(sortedBooks.toString());
             System.out.println("");
-    }
-        else if (sortLibraryBy.equals("Journal - Date")) {
+        } else if (sortLibraryBy.equals("Journal - Date")) {
             sortedLibrary = "";
             List sortedBooks;
             sortedBooks = getSortedBookByJournalDate(authorsJournal);
             sortedLibrary = sortedLibrary.concat(sortedBooks.toString());
             System.out.println("");
-        }
-        else if (sortLibraryBy.equals("Journal - Issue")) {
+        } else if (sortLibraryBy.equals("Journal - Issue")) {
             sortedLibrary = "";
             List sortedBooks;
             sortedBooks = getSortedBookByJournalIssue(authorsJournal);
@@ -201,6 +245,7 @@ public class SortAndSearchUtilities {
             System.out.println("authorIndexValue = " + authorIndexValue);
         }
     }
+
     private static List getSortedBookByTitle(final Map bookMap) {
         List list = new LinkedList(bookMap.values());
         System.out.println("Before Sorting: " + list);
@@ -217,6 +262,7 @@ public class SortAndSearchUtilities {
         System.out.println("After Sorting: " + list);
         return list;
     }
+
     private static List getSortedBookByPrice(final Map bookMap) {
         List list = new LinkedList(bookMap.values());
         System.out.println("Before Sorting: " + list);
@@ -233,6 +279,7 @@ public class SortAndSearchUtilities {
         System.out.println("After Sorting: " + list);
         return list;
     }
+
     private static List getSortedBookByBookIndex(final Map bookMap) {
         List list = new LinkedList(bookMap.values());
         System.out.println("Before Sorting: " + list);
@@ -249,6 +296,7 @@ public class SortAndSearchUtilities {
         System.out.println("After Sorting: " + list);
         return list;
     }
+
     private static List getSortedBookByJournalDate(final Map bookMap) {
         List list = new LinkedList(bookMap.values());
         System.out.println("Before Sorting: " + list);
@@ -265,6 +313,7 @@ public class SortAndSearchUtilities {
         System.out.println("After Sorting: " + list);
         return list;
     }
+
     private static List getSortedBookByJournalIssue(final Map bookMap) {
         List list = new LinkedList(bookMap.values());
         System.out.println("Before Sorting: " + list);
@@ -281,6 +330,7 @@ public class SortAndSearchUtilities {
         System.out.println("After Sorting: " + list);
         return list;
     }
+
     private static String reverseNameOrder(String fullName) {
         String[] splitFullName = fullName.split(" ");
         return splitFullName[1] + " " + splitFullName[0] + " : " + splitFullName[3];

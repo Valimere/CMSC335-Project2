@@ -25,6 +25,7 @@ public class Library {
     private static Map<Integer, Book> authorsBooks = new HashMap<Integer, Book>();
     private static Map<Integer, Journal> authorsJournal = new HashMap<Integer, Journal>();
     private static String sortedLibrary;
+    private static String searchedLibrary;
 
     // Constructor for Arraylist Author/Books
     public Library() {
@@ -39,8 +40,11 @@ public class Library {
 
     public static String sort(String sortBy){
         sortedLibrary = SortAndSearchUtilities.getSortedLibraryString(sortBy, libraryOfAuthors, authorsBooks, authorsJournal);
-        
         return sortedLibrary;
+    }
+    public static String search(String searchBy){
+        searchedLibrary = SortAndSearchUtilities.getSearchedItem(searchBy, libraryOfAuthors, authorsBooks, authorsJournal);
+        return searchedLibrary;
     }
 
     /**
