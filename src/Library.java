@@ -5,24 +5,26 @@
  * purpose   class to define the library
  *
  */
-import java.util.*;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 // Library class
 public class Library {
 
     // Creating Library ArrayList<ArrayList>
-    //public ArrayList<ArrayList> bookList1 = new ArrayList<>();
-    
+
     
     // Creating AuthorList/s
     private ArrayList<Author> authorList1 = new ArrayList<Author>();
     // Creating BooksList
     private ArrayList<Book> bookList1 = new ArrayList<Book>();
     
-    public static Map<Integer, Author> libraryOfAuthors = new HashMap<Integer, Author>();
-    public static Map<Integer, Book> authorsBooks = new HashMap<Integer, Book>();
-    public static Map<Integer, Journal> authorsJournal = new HashMap<Integer, Journal>();
-    public static String sortedLibrary;
+    private static Map<Integer, Author> libraryOfAuthors = new HashMap<Integer, Author>();
+    private static Map<Integer, Book> authorsBooks = new HashMap<Integer, Book>();
+    private static Map<Integer, Journal> authorsJournal = new HashMap<Integer, Journal>();
+    private static String sortedLibrary;
 
     // Constructor for Arraylist Author/Books
     public Library() {
@@ -36,7 +38,7 @@ public class Library {
     }
 
     public static String sort(String sortBy){
-        sortedLibrary = SortLibrary.getSortedLibraryString(sortBy, libraryOfAuthors, authorsBooks, authorsJournal);
+        sortedLibrary = SortAndSearchUtilities.getSortedLibraryString(sortBy, libraryOfAuthors, authorsBooks, authorsJournal);
         
         return sortedLibrary;
     }

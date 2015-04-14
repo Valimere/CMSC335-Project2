@@ -12,29 +12,29 @@ public class Book {
 
     // Setting Book Specific Variables
 
-    public int index;
-    public String title;
-    public String genre;
-    public double price;
-    public int author_index;
-    public List<String> extras;
+    private int index;
+    private String title;
+    private String genre;
+    private double price;
+    private int author_index;
+    private List<String> extras;
 
     // constructing Book bringing in super's properties
     public Book(int index, String title, String genre,double price, 
             int author_index, List<String> extras) {
 
         // bringing in book specific properties
-        index = this.index;
-        title = this.title;
-        genre = this.genre;
-        price = this.price;
-        author_index = this.author_index;
-        extras = this.extras;
+        this.index = index;
+        this.title = title;
+        this.genre = genre;
+        this.price = price;
+        this.author_index = author_index;
+        this.extras = extras;
     }
 
     public String toString() {
-        return "\n" + "Index: " + getIndex() + "\n" + "Genre: " + getGenre() + "\n" + 
-                "price: " + getPrice() + "\n" + "author_index: " + getAuthor_Index() + "\n";
+        return "\n" + "Index: " + getIndex() + "\n" + "Title: " + getTitle() + "\n" + "Genre: " + getGenre() + "\n" +
+                "Price: $" + getPrice() + "\n" + "Author Index: " + getAuthor_Index() + "\n";
     }
 
     /**

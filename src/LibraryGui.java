@@ -6,7 +6,7 @@
  *
  */
 
-import javax.swing.JLabel;
+import javax.swing.*;
 
 public class LibraryGui extends javax.swing.JFrame {
 
@@ -132,6 +132,8 @@ public class LibraryGui extends javax.swing.JFrame {
         //Library.sort(jComboBox1.getSelectedItem().toString());
         jScrollPane1.setViewportView(new JLabel(convertToMultiline(Library.sort(jComboBox1.getSelectedItem().toString()))));
     }//GEN-LAST:event_jComboBox1ActionPerformed
+
+
 
     /**
      * @param args the command line arguments

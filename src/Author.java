@@ -11,28 +11,28 @@ import java.util.List;
 public class Author {
 
     // Setting Author Specific Variables
-    public int index;
-    public String firstName;
-    public String lastName;
-    public String name = firstName + " " + lastName;
-    public String address;
-    public List<String> extras;
+    private int index;
+    private String firstName;
+    private String lastName;
+    private String name = firstName + " " + lastName;
+    private String address;
+    private List<String> extras;
 
 
     // constructing Author bringing in super's properties
     public Author(int index, String name, String address, List<String> extras) {
 
         // bringing in Author specific properties
-        index = this.index;
-        name = this.name;
-        address = this.address;
-        extras = this.extras;
+        this.index = index;
+        this.name = name;
+        this.address = address;
+        this.extras = extras;
     }
 
     
         public String toString() {
-        return "\n" + "index: " + index + "\n" + "name: " + name + "\n" + 
-                "address: " + address + "\n";
+        return "\n" + "Index: " + getIndex() + "\n" + "Name: " + getName() + "\n" +
+                "Address: " + getAddress() + "\n";
     }
             
     /**

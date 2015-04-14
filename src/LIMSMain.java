@@ -61,10 +61,6 @@ public class LIMSMain {
             System.out.println(arrayOfUnexpectedInput);
         }
 
-
-        
-
-        
         // Opening LIMS GUI
         LibraryGui LG = new LibraryGui(mainLibrary);        
         LG.setVisible(true);
@@ -88,8 +84,7 @@ public class LIMSMain {
         Calendar datePublished = GregorianCalendar.getInstance();
         SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy", Locale.US);
         int journalIssue;
-        
-        
+
         // Book Data fields
         int bookIndex;
         double bookPrice;
@@ -154,13 +149,8 @@ public class LIMSMain {
                 // adding book to Library
                 Book book1 = new Book(bookIndex, bookTitle, bookGenre,
                         bookPrice, bookAuthor_Index, extrasList);
-                book1.setIndex(bookIndex);
-                book1.setTitle(bookTitle);
-                book1.setGenre(bookGenre);
-                book1.setPrice(bookPrice);
-                book1.setAuthor_Index(bookAuthor_Index);
-                book1.setExtras(extrasList);
-                mainLibrary.authorsBooks.put(bookIndex, book1);
+
+                mainLibrary.getAuthorsBooks().put(bookIndex, book1);
 
                 System.out.println("");
 
@@ -188,11 +178,8 @@ public class LIMSMain {
                 // adding author to Library
                 Author author1 = new Author(authorIndex, authorName, authorAddress, extrasList);
                 System.out.println("");
-                author1.setIndex(authorIndex);
-                author1.setName(authorName);
-                author1.setAddress(authorAddress);
-                author1.setExtras(extrasList);
-                mainLibrary.libraryOfAuthors.put(authorIndex, author1);
+
+                mainLibrary.getLibraryOfAuthors().put(authorIndex, author1);
                 System.out.println("author to library :" + author1);
 
             } else if (tempLine.charAt(0) == 'j' && tempLine.charAt(1) == ' ' && tempLine.charAt(2) == ':') {
@@ -212,8 +199,7 @@ public class LIMSMain {
                 System.out.println("journalPrice = " + journalPrice);
                 journalAuthorIndex = Integer.parseInt(list.get(5));
                 System.out.println("journalAuthorIndex = " + journalAuthorIndex);
-                Date date = sdf.parse(list.get(6));
-                datePublished.setTime(date);
+                datePublished.setTime(sdf.parse(list.get(6)));
                 System.out.println("datePublished = " + datePublished);
                 journalIssue = Integer.parseInt(list.get(7));
                 System.out.println("journalIssue = " + journalIssue);
@@ -231,17 +217,9 @@ public class LIMSMain {
                 System.out.println("");
                 System.out.println("testing date published isn't null" + datePublished);
                 System.out.println(journal1.toString());
-                /*
-                journal1.setIndex(journalIndex);
-                journal1.setTitle(journalTitle);
-                journal1.setGenre(journalGenre);
-                journal1.setPrice(journalPrice);
-                journal1.setAuthorIndex(journalAuthorIndex);
-                journal1.setJournalDatePublished(datePublished);
-                journal1.setIssue(journalIssue);
-                */
-                
-                mainLibrary.authorsJournal.put(journalIndex, journal1);
+
+                mainLibrary.getAuthorsJournal().put(journalIndex, journal1);
+                //System.out.println("Journals steve look here: " + );
             }else {
 
                 //Checking for anything else and putting them into an unexpected ArrayList

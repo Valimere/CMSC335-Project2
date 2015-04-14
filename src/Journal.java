@@ -28,11 +28,11 @@ public class Journal {
     }
     
     public String toString() {
-        return "\n" + "Index: " + getIndex() + "\n" + "Title: " + 
-                "\n" + "Genre: " + getGenre() + "\n" + "price: " + getPrice() + 
-                "\n" + "author_index: " + getAuthorIndex() + 
+        return "\n" + "Index: " + getIndex() + "\n" + "Title: " + getTitle() +
+                "\n" + "Genre: " + getGenre() + "\n" + "Price: $" + getPrice() +
+                "\n" + "Author Index: " + getAuthorIndex() +
                 "\n" + "Date Published: " + dateToString(getJournalDatePublished()) +
-                "\n" + "Issue: " + getIssue();
+                "\n" + "Issue: " + getIssue() + "\n";
     }
     
     /**
@@ -113,7 +113,7 @@ public class Journal {
     }
 
     /**
-     * @param journalDatePublished the dateOfBrith to set
+     * @param journalDatePublished the dateOfBirth to set
      */
     public void setJournalDatePublished(Calendar journalDatePublished) {
         this.journalDatePublished = journalDatePublished;
